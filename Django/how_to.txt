@@ -3,3 +3,6 @@ Next, you create a virtual environment for your Django application : source env/
 Then you create a Django project : pip3 install django (# to check the version : python3 -m django version)
 Finally run the Django development server : django-admin startproject projectName
 Run the project : cd projectName && python manage.py runserver
+
+
+python -m django startapp myapp

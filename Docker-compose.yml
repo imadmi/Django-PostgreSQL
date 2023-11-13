@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # postgres:
+  #   image: postgres:latest
+  #   container_name: my_postgres
+  #   environment:
+  #     POSTGRES_DB: your_database
+  #     POSTGRES_USER: your_user
+  #     POSTGRES_PASSWORD: your_password
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - ./database/postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - my_network
+
+  web:
+    build: ./Django
+    volumes:
+      - ./django:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_DB_HOST=postgres
+      - DJANGO_DB_NAME=your_database
+      - DJANGO_DB_USER=your_user
+      - DJANGO_DB_PASSWORD=your_password
+      - DJANGO_DB_PORT=5432
+    # depends_on:
+    #   - postgres
+    # networks:
+    #   - my_network
+
+volumes:
+  postgres_data:
+
+# networks:
+#   my_network:
+#     driver: bridge
+
+
+#docker exec -it 57d0c45b0ced psql -U your_user postgres
